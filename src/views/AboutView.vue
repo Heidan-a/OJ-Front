@@ -1,5 +1,8 @@
-<template>
+ <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <CodeEditor />
   </div>
 </template>
+ <script setup lang="ts">
+ import CodeEditor from "@/components/CodeEditor.vue";
+ </script>

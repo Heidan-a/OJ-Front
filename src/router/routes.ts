@@ -1,11 +1,36 @@
 import { RouteRecordRaw } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
 import AdminView from "@/views/AdminView.vue";
 import NoAuthView from "@/views/NoAuthView.vue";
 import AboutView from "@/views/AboutView.vue";
 import ACCESS_ENUM from "@/access/accessEnum";
+import UserLayout from "@/layouts/UserLayout.vue";
+import UserLoginView from "@/views/user/UserLoginView.vue";
+import UserRegisterView from "@/views/user/UserRegisterView.vue";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import HomeView from "@/views/HomeView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/user",
+    name: "用户页面",
+    component: UserLayout,
+    meta: {
+      hideInMenu: true,
+    },
+    children: [
+      {
+        path: "login",
+        name: "用户登录",
+        component: UserLoginView,
+      },
+      {
+        path: "register",
+        name: "用户注册",
+        component: UserRegisterView,
+      },
+    ],
+  },
   {
     path: "/",
     name: "浏览题目",

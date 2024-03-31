@@ -1,18 +1,27 @@
 import { StoreOptions } from "vuex";
 import ACCESS_ENUM from "@/access/accessEnum";
+import { UserControllerService } from "../../generated";
 
 export default {
   namespaced: true,
   state: () => ({
     loginUser: {
       userName: "未登录",
-      userRole: ACCESS_ENUM.NOT_LOGIN,
     },
   }),
   //action调用mutation取改变state
   actions: {
-    getLoginUser({ commit, state }, payload) {
-      commit("updateUser", payload);
+    //获取登录信息
+    async getLoginUser({ commit, state }, payload) {
+      const res = await UserControllerService.getLoginUserUsingGet();
+      if (res.code === 0) {
+        commit("updateUser", payload);
+      } else {
+        commit("updateUser", {
+          ...state.loginUser,
+          userRole: ACCESS_ENUM.NOT_LOGIN,
+        });
+      }
     },
   },
   mutations: {

@@ -14,7 +14,6 @@
             disabled
           >
             <div class="title-bar">
-              <img id="logo" src="../assets/navigation.svg" />
               <div class="title">OJ</div>
             </div>
           </a-menu-item>
