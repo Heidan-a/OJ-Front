@@ -2,14 +2,14 @@ import store from "@/store";
 import router from "@/router";
 import ACCESS_ENUM from "@/access/accessEnum";
 import checkAccess from "@/access/checkAccess";
+
 router.beforeEach(async (to, from, next) => {
-  console.log(store.state.user.loginUser);
-  // if (to.meta?.access === "canAdmin") {
-  //   if (store.state.user.loginUser?.role !== "admin") {
-  //     next("noAuth");
-  //     return;
-  //   }
-  // }
+  if (to.meta?.access === "admin") {
+    if (store.state.user.loginUser?.userRole !== "admin") {
+      next("noAuth");
+      return;
+    }
+  }
   const loginUser = store.state.user.loginUser;
   if (!loginUser || !loginUser.userRole) {
     //等用户登录之后在校验

@@ -46,20 +46,18 @@ const form = reactive({
 } as UserLoginRequest);
 /**
  * 提交表单
- * @param data
+ * @param
  */
 const handleSubmit = async () => {
   const res = await UserControllerService.userLoginUsingPost(form);
   if (res.code === 0) {
-    alert(JSON.stringify(res.data));
     await store.dispatch("user/getLoginUser");
-    router.push({
+    await router.push({
       path: "/",
       replace: true,
     });
   } else {
     message.error("登录失败," + res.message);
   }
-  alert(JSON.stringify(form));
 };
 </script>

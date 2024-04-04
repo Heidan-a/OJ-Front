@@ -1,6 +1,5 @@
  <template>
   <div class="about">
-    <CodeEditor />
   </div>
 </template>
  <script setup lang="ts">

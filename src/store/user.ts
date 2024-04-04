@@ -6,7 +6,7 @@ export default {
   namespaced: true,
   state: () => ({
     loginUser: {
-      userName: "未登录",
+      userName: "游客",
     },
   }),
   //action调用mutation取改变state
@@ -15,7 +15,8 @@ export default {
     async getLoginUser({ commit, state }, payload) {
       const res = await UserControllerService.getLoginUserUsingGet();
       if (res.code === 0) {
-        commit("updateUser", payload);
+        state.loginUser.userName = res.data.userName
+        state.loginUser.userRole = res.data.userRole
       } else {
         commit("updateUser", {
           ...state.loginUser,

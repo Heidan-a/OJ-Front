@@ -12,6 +12,7 @@
     "@bytemd/plugin-gfm": "^1.21.0",
     "@bytemd/plugin-highlight": "^1.21.0",
     "@bytemd/vue-next": "^1.21.0",
+    "ant-design-vue": "^4.1.2",
     "axios": "^1.6.2",
     "bytemd": "^1.21.0",
     "core-js": "^3.8.3",

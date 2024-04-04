@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MdEditor :value="mdValue" :hand-change="mdOnChange" />
+    <MdEditor  :value="mdValue" :hand-change="mdOnChange" />
     <code-editor :value="codeValue" :hand-change="codeOnChange" />
   </div>
 </template>

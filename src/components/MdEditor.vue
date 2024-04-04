@@ -5,6 +5,7 @@
       :locale="zhHans"
       :plugins="plugins"
       :value="value"
+      :mode="mode"
       @change="handChange"
     />
   </div>
@@ -25,17 +26,21 @@ const plugins = [gfm(), highlight()];
 
 interface Props {
   value: string;
+  mode?: string;
   handChange: (v: string) => void;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   value: () => "",
+  mode: () => "split",
   handChange: (v: string) => {
-    console.log(v);
   },
 });
 </script>
 <style lang="scss">
+.bytemd-toolbar-icon.bytemd-tippy.bytemd-tippy-right:last-child {
+  display: none;
+}
 //.details {
 //  position: fixed;
 //  top: 60px;
